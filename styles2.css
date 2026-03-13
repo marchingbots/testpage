@@ -1,0 +1,548 @@
+/* ======================================
+   GLOBAL FOUNDATION
+====================================== */
+
+html,
+body {
+  letter-spacing: -0.005em;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Homepage theme only */
+body.site-home {
+  background-color: #212529;
+  color: #fff;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ======================================
+   GLOBAL NAV
+====================================== */
+
+.nav-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Homepage nav appearance */
+body.site-home .nav-link {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.site-home .nav-link:hover,
+body.site-home .nav-link:focus,
+body.site-home .nav-link.active {
+  color: #fff;
+}
+
+/* ======================================
+   GLOBAL TYPE SCALE
+====================================== */
+
+h1,
+.h1 {
+  font-weight: 300;
+}
+
+h2,
+.h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+h3,
+.h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+h4,
+.h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 992px) {
+  h2,
+  .h2 {
+    font-size: 2.5rem;
+  }
+
+  h3,
+  .h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ======================================
+   INTRO SCREEN
+====================================== */
+
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #212529;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: opacity 0.8s ease;
+}
+
+/* ======================================
+   HOMEPAGE HERO TYPOGRAPHY
+====================================== */
+
+.hero-heading {
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.brand-block {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.brand-logo {
+  width: 60px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.hero-brand {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.hero-tagline {
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* ======================================
+   HOMEPAGE HERO CARDS
+====================================== */
+
+.hero-card {
+  position: relative;
+  min-height: 350px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.hero-card > div {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-1 {
+  background-image: url("/unsplash-photo-1.jpg");
+}
+
+.hero-2 {
+  background-image: url("/unsplash-photo-2.jpg");
+}
+
+.hero-3 {
+  background-image: url("/unsplash-photo-3.jpg");
+}
+
+.hero-4 {
+  background-image: url("/unsplash-photo-4.jpg");
+}
+
+.hero-5 {
+  background-image: url("/unsplash-photo-5.jpg");
+}
+
+/* ======================================
+   RESPONSIVE TYPOGRAPHY
+====================================== */
+
+@media (max-width: 575.98px) {
+  .hero-heading {
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+
+  .brand-logo {
+    width: 40px;
+  }
+
+  .hero-brand {
+    font-weight: 600;
+  }
+
+  .hero-tagline {
+    font-weight: 400;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .hero-heading {
+    font-size: 2.25rem;
+  }
+
+  .brand-logo {
+    width: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-heading {
+    font-size: 3rem;
+    font-weight: 300;
+  }
+
+  .brand-logo {
+    width: 70px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-heading {
+    font-size: 3.5rem;
+  }
+
+  .brand-logo {
+    width: 80px;
+  }
+}
+
+/* ======================================
+   MOBILE / TABLET HOMEPAGE REWORK
+====================================== */
+
+.mobile-home-hero {
+  padding: 2.75rem 0 2.5rem;
+}
+
+.mobile-home-title {
+  margin: 0;
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.mobile-home-tagline {
+  margin-top: 0.9rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  line-height: 1.5;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+
+.mobile-home-lead {
+  max-width: 42rem;
+  margin: 1.4rem auto 0;
+  font-size: clamp(0.95rem, 1.4vw, 1rem);
+  line-height: 1.75;
+  color: rgba(255,255,255,0.8);
+}
+
+.mobile-home-hero {
+  padding: 3rem 0 2.25rem;
+}
+
+.mobile-services-section {
+  padding: 0 0 4rem;
+}
+
+/* card shell */
+.hero-card {
+  position: relative;
+  min-height: 360px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #0f1113;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-card:hover,
+.hero-card:focus {
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.mobile-card-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12) 0%,
+      rgba(0, 0, 0, 0.24) 34%,
+      rgba(0, 0, 0, 0.74) 100%
+    );
+  z-index: 0;
+}
+
+.mobile-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 360px;
+  padding: 1.5rem;
+}
+
+.mobile-card-copy {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.mobile-card-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.mobile-card-title {
+  margin: 0 0 0.8rem;
+  font-size: 1.65rem;
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.mobile-card-text {
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+/* tighten nav / hero relationship under 992px */
+@media (max-width: 991.98px) {
+  header.py-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  .navbar {
+    min-height: auto;
+  }
+
+  .navbar-toggler {
+    margin-left: auto;
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .navbar-collapse {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+  }
+
+  body.site-home .nav-link {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+}
+
+/* smaller phones */
+@media (max-width: 575.98px) {
+  .mobile-home-hero {
+    padding: 2.1rem 0 2rem;
+  }
+
+  .mobile-home-title {
+    font-size: clamp(2.85rem, 13vw, 4.1rem);
+    line-height: 0.93;
+  }
+
+  .mobile-home-tagline {
+    margin-top: 0.9rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    letter-spacing: 0.12em;
+  }
+
+  .mobile-home-lead {
+    margin-top: 1.15rem;
+    font-size: 0.96rem;
+    line-height: 1.75;
+  }
+
+  .hero-card {
+    min-height: 320px;
+    border-radius: 1rem !important;
+    box-shadow:
+      0 8px 18px rgba(0, 0, 0, 0.15),
+      0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  }
+
+  .mobile-card-content {
+    min-height: 320px;
+    padding: 1.2rem;
+  }
+
+  .mobile-card-title {
+    font-size: 1.4rem;
+  }
+
+  .mobile-card-text {
+    font-size: 0.94rem;
+    line-height: 1.68;
+  }
+}
+
+/* tablet only */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .mobile-home-hero {
+    padding: 2.8rem 0 2.35rem;
+  }
+
+  .mobile-home-title {
+    font-size: clamp(4rem, 9vw, 5.8rem);
+  }
+
+  .mobile-home-tagline {
+    font-size: 0.88rem;
+  }
+
+  .mobile-home-lead {
+    max-width: 36rem;
+  }
+
+  .mobile-card-content {
+    padding: 1.65rem;
+  }
+
+  .mobile-card-title {
+    font-size: 1.75rem;
+  }
+
+  .mobile-card-text {
+    max-width: 29rem;
+  }
+}
+
+/* desktop keeps current centered homepage treatment */
+@media (min-width: 992px) {
+  .mobile-home-hero,
+  .mobile-services-section {
+    display: none;
+  }
+
+  .hero-card {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+/* ======================================
+   DESKTOP LANDING PATHS
+====================================== */
+
+@media (min-width: 992px) {
+  .desktop-home-main {
+    padding: 4rem 0;
+  }
+
+  .desktop-entry-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .customer-path-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 172px;
+    padding: 2rem 2rem 1.9rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    text-align: left;
+    transition:
+      transform 0.18s ease,
+      border-color 0.18s ease,
+      background-color 0.18s ease,
+      box-shadow 0.18s ease;
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .customer-path-card:hover,
+  .customer-path-card:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    outline: none;
+    box-shadow:
+      0 18px 40px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .customer-path-label {
+    display: block;
+    margin-bottom: 0.65rem;
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .customer-path-copy {
+    display: block;
+    max-width: 28rem;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .customer-path-card:hover .customer-path-copy,
+  .customer-path-card:focus-visible .customer-path-copy {
+    color: rgba(255, 255, 255, 0.92);
+  }
+}
