@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entering Indonesia — Kapan Kita Bersama</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --bg-soft: #faf8f3;
+      --panel: rgba(255, 255, 255, 0.9);
+      --panel-strong: #ffffff;
+      --text: #111111;
+      --muted: rgba(17, 17, 17, 0.66);
+      --muted-soft: rgba(17, 17, 17, 0.46);
+      --line: rgba(17, 17, 17, 0.08);
+      --line-strong: rgba(17, 17, 17, 0.14);
+      --accent: #8c6a43;
+      --accent-soft: #f0e7d8;
+      --accent-text: #6f5535;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
+      --radius-xl: 32px;
+      --radius-lg: 26px;
+      --radius-pill: 999px;
+      --max-width: 430px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.55), transparent 30%),
+        linear-gradient(180deg, rgba(245,241,232,0.92), rgba(245,241,232,0.98)),
+        var(--bg);
+    }
+
+    .site-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site-shell::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(140,106,67,0.08), transparent 25%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,0.52), transparent 18%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .topbar, .content { position: relative; z-index: 1; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px 16px;
+      backdrop-filter: blur(18px);
+      background: rgba(245, 241, 232, 0.84);
+      border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+    }
+
+    .brand-label {
+      margin: 0;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+    }
+
+    .brand-tagline {
+      margin: 6px 0 0;
+      font-size: 0.94rem;
+      line-height: 1.45;
+      color: var(--muted);
+      max-width: 22ch;
+    }
+
+    .back-link {
+      flex-shrink: 0;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.56);
+      border-radius: var(--radius-pill);
+      padding: 11px 16px;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .content { padding: 22px 20px 56px; }
+    .section { padding-top: 32px; }
+
+    .hero-card, .copy-card, .offer-card, .cta-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 22px 18px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--muted-soft);
+    }
+
+    .hero-title {
+      margin: 18px 0 0;
+      max-width: 11ch;
+      font-size: clamp(2.25rem, 8vw, 2.9rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+    }
+
+    .hero-text, .copy-text, .offer-text, .price-text, .note-text, .cta-text {
+      margin: 12px 0 0;
+      font-size: 0.97rem;
+      line-height: 1.76;
+      color: var(--muted);
+    }
+
+    .hero-actions, .cta-actions, .offer-grid, .bullet-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-actions, .cta-actions { margin-top: 22px; }
+    .offer-grid { margin-top: 16px; }
+
+    .primary-btn, .secondary-btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: var(--radius-pill);
+      padding: 15px 18px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .primary-btn {
+      background: #111111;
+      color: #ffffff;
+      border: none;
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+    }
+
+    .section-title {
+      margin: 10px 0 0;
+      font-size: 2rem;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+      max-width: 12ch;
+    }
+
+    .copy-card { border-radius: var(--radius-lg); }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 0.95rem;
+      line-height: 1.68;
+      color: var(--muted);
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .offer-card {
+      background: var(--panel-strong);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+    }
+
+    .offer-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .offer-title {
+      margin: 14px 0 0;
+      font-size: 1.24rem;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+    }
+
+    .price-box {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .price-label {
+      margin: 0;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted-soft);
+    }
+
+    .price-amount {
+      margin: 8px 0 0;
+      font-size: 1.1rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+    }
+
+    .note-card {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: var(--radius-lg);
+      background: rgba(250, 248, 243, 0.95);
+      border: 1px solid var(--line);
+    }
+
+    .cta-card {
+      background: #111111;
+      color: #ffffff;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+    }
+
+    .cta-card .eyebrow { color: rgba(255,255,255,0.58); }
+    .cta-card .section-title { max-width: 10ch; }
+    .cta-card .cta-text { color: rgba(255,255,255,0.74); }
+    .cta-card .primary-btn { background: #ffffff; color: #111111; }
+    .cta-card .secondary-btn { color: #ffffff; border-color: rgba(255,255,255,0.2); }
+
+    @media (min-width: 768px) {
+      body { display: flex; justify-content: center; padding: 18px 0; }
+      .site-shell {
+        border-radius: 34px;
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(17, 17, 17, 0.06);
+      }
+      .topbar {
+        border-top-left-radius: 34px;
+        border-top-right-radius: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div>
+        <p class="brand-label">Kapan Kita Bersama</p>
+        <p class="brand-tagline">Legal, administrative, and long-term support for foreign nationals in Indonesia.</p>
+      </div>
+      <a class="back-link" href="index.html">Back</a>
+    </header>
+
+    <main class="content">
+      <section class="hero-card">
+        <p class="eyebrow">Entering Indonesia</p>
+        <h1 class="hero-title">Enter Indonesia with your position structured correctly.</h1>
+        <p class="hero-text">
+          Relocation into Indonesia is not just a visa process. It is a sequence of legal and administrative steps that determine how you operate once you arrive.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-btn" href="#offers">View packages</a>
+          <a class="secondary-btn" href="#consult">Book initial consultation</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="copy-card">
+          <p class="eyebrow">Positioning</p>
+          <h2 class="section-title">Most problems start with early decisions.</h2>
+          <p class="copy-text">
+            Most foreigners make early administrative decisions that later create issues with visas, banking, registration, and compliance.
+          </p>
+          <p class="copy-text">
+            We handle your transition from arrival through full legal establishment, so the structure is correct from the outset.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="copy-card">
+          <p class="eyebrow">What we handle</p>
+          <h2 class="section-title">Handled correctly from day one.</h2>
+          <ul class="bullet-list">
+            <li>Pre-arrival document preparation</li>
+            <li>Visa pathway structuring</li>
+            <li>Civil registration and reporting</li>
+            <li>Address and residency compliance</li>
+            <li>Local system navigation from day one</li>
+            <li>Initial administrative setup</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="offers">
+        <p class="eyebrow">Offers</p>
+        <h2 class="section-title">Two clear ways to proceed.</h2>
+
+        <div class="offer-grid">
+          <article class="offer-card">
+            <span class="offer-tag">Offer 01</span>
+            <h3 class="offer-title">Relocation Setup Package</h3>
+            <p class="offer-text">End-to-end setup from arrival through full compliance.</p>
+            <ul class="bullet-list">
+              <li>Pre-arrival guidance</li>
+              <li>On-ground coordination</li>
+              <li>Registration handling</li>
+              <li>Step-by-step compliance execution</li>
+            </ul>
+            <div class="price-box">
+              <p class="price-label">Price</p>
+              <p class="price-amount">$2,500 – $5,000</p>
+              <p class="price-text">Depending on complexity.</p>
+            </div>
+          </article>
+
+          <article class="offer-card">
+            <span class="offer-tag">Offer 02</span>
+            <h3 class="offer-title">Relocation + Ongoing Support</h3>
+            <p class="offer-text">Full setup with continued compliance and advisory after arrival.</p>
+            <ul class="bullet-list">
+              <li>Everything in the setup package</li>
+              <li>Ongoing compliance oversight</li>
+              <li>Priority advisory access</li>
+            </ul>
+            <div class="price-box">
+              <p class="price-label">Price</p>
+              <p class="price-amount">$2,500 – $5,000 setup</p>
+              <p class="price-text">$250 – $500/month retainer</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="note-card">
+          <p class="eyebrow">Why clients choose retainer</p>
+          <p class="note-text">
+            Most clients choose ongoing oversight to ensure nothing is missed once the initial setup is complete.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="consult">
+        <div class="cta-card">
+          <p class="eyebrow">Consultation</p>
+          <h2 class="section-title">Book the right first step.</h2>
+          <p class="cta-text">
+            Use the initial consultation to assess your timeline, risks, and the correct path for entering Indonesia properly.
+          </p>
+          <div class="cta-actions">
+            <a class="primary-btn" href="intake.html">Start intake form</a>
+            <a class="secondary-btn" href="#">WhatsApp / Email</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

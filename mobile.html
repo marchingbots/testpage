@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kapan Kita Bersama — Mobile Landing Page</title>
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --bg-soft: #faf8f3;
+      --panel: rgba(255, 255, 255, 0.88);
+      --panel-strong: #ffffff;
+      --text: #111111;
+      --muted: rgba(17, 17, 17, 0.66);
+      --muted-soft: rgba(17, 17, 17, 0.46);
+      --line: rgba(17, 17, 17, 0.08);
+      --line-strong: rgba(17, 17, 17, 0.14);
+      --accent: #8c6a43;
+      --accent-soft: #f0e7d8;
+      --accent-text: #6f5535;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
+      --radius-xl: 32px;
+      --radius-lg: 26px;
+      --radius-md: 20px;
+      --radius-pill: 999px;
+      --max-width: 430px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.55), transparent 30%),
+        linear-gradient(180deg, rgba(245,241,232,0.92), rgba(245,241,232,0.98)),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .site-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site-shell::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(140,106,67,0.08), transparent 25%),
+        radial-gradient(circle at 80% 15%, rgba(255,255,255,0.52), transparent 18%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .topbar,
+    .content,
+    .menu-panel {
+      position: relative;
+      z-index: 1;
+    }
+
+.topbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 20px 14px;
+  backdrop-filter: blur(18px);
+  background: rgba(245, 241, 232, 0.9);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.06);
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.brand-label {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+  text-transform: none;
+  color: #111111;
+}
+
+.brand-tagline {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: rgba(17, 17, 17, 0.68);
+  max-width: none;
+}
+
+
+
+
+    .menu-btn,
+    .primary-btn,
+    .secondary-btn,
+    .path-card,
+    .text-link {
+      font: inherit;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-btn {
+      flex-shrink: 0;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.56);
+      color: var(--text);
+      border-radius: var(--radius-pill);
+      padding: 11px 16px;
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .content {
+      padding: 22px 20px 56px;
+    }
+
+    .hero-card,
+    .trust-card,
+    .path-card,
+    .step-card,
+    .positioning-card,
+    .cta-card,
+    .intake-card {
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 24px 20px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--muted-soft);
+    }
+
+    .hero-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      background: var(--accent);
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .hero-title {
+      margin: 22px 0 0;
+      max-width: 11ch;
+      font-size: clamp(2.4rem, 8vw, 3rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      font-weight: 500;
+    }
+
+    .hero-text {
+      margin: 18px 0 0;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 31ch;
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      width: 100%;
+      border-radius: var(--radius-pill);
+      padding: 15px 18px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .primary-btn {
+      background: #111111;
+      color: #ffffff;
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line-strong);
+    }
+
+    .section {
+      padding-top: 34px;
+    }
+
+    .section-header {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      margin: 10px 0 0;
+      font-size: 2rem;
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+      max-width: 12ch;
+    }
+
+    .section-copy {
+      margin: 12px 0 0;
+      font-size: 0.96rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 34ch;
+    }
+
+    .trust-card,
+    .positioning-card,
+    .cta-card,
+    .intake-card,
+    .step-card,
+    .path-card {
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .trust-card,
+    .positioning-card,
+    .cta-card,
+    .intake-card {
+      padding: 18px 16px;
+    }
+
+    .trust-title,
+    .positioning-title,
+    .cta-title,
+    .intake-title {
+      margin: 10px 0 0;
+      font-size: 1.32rem;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+    }
+
+    .trust-text,
+    .positioning-text,
+    .cta-text,
+    .intake-text {
+      margin: 12px 0 0;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .path-grid,
+    .steps-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .path-card,
+    .step-card {
+      width: 100%;
+      text-align: left;
+      padding: 16px;
+    }
+
+    .path-top,
+    .step-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .path-tag,
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      padding: 7px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .path-arrow {
+      font-size: 1.1rem;
+      color: rgba(17, 17, 17, 0.34);
+    }
+
+    .path-title,
+    .step-title {
+      margin: 0;
+      font-size: 1.2rem;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+    }
+
+    .path-text,
+    .step-text {
+      margin: 10px 0 0;
+      font-size: 0.94rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .text-link {
+      margin-top: 16px;
+      padding: 0;
+      background: none;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .positioning-card {
+      background: rgba(250, 248, 243, 0.95);
+    }
+
+    .cta-card {
+      margin-top: 8px;
+      background: #111111;
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 22px 20px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+    }
+
+    .cta-card .eyebrow {
+      color: rgba(255, 255, 255, 0.58);
+    }
+
+    .cta-title {
+      max-width: 13ch;
+    }
+
+    .cta-text {
+      color: rgba(255, 255, 255, 0.74);
+      max-width: 30ch;
+    }
+
+    .cta-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .cta-card .primary-btn {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    .cta-card .secondary-btn {
+      border-color: rgba(255,255,255,0.18);
+      color: #ffffff;
+    }
+
+    .intake-list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .intake-list li {
+      padding-left: 18px;
+      position: relative;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .intake-list li::before {
+      content: "";
+      position: absolute;
+      top: 0.62rem;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .menu-panel {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 17, 17, 0.38);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 20;
+    }
+
+    .menu-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .menu-sheet {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: min(86vw, 360px);
+      height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(18px);
+      padding: 24px 20px;
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+      box-shadow: -18px 0 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .menu-panel.open .menu-sheet {
+      transform: translateX(0);
+    }
+
+    .menu-sheet-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      gap: 14px;
+    }
+
+    .menu-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line-strong);
+      background: #ffffff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .menu-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .menu-link {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1.04rem;
+      line-height: 1.3;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    }
+
+    @media (min-width: 768px) {
+      body {
+        display: flex;
+        justify-content: center;
+        padding: 18px 0;
+      }
+
+      .site-shell {
+        border-radius: 34px;
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(17, 17, 17, 0.06);
+      }
+
+      .topbar {
+        border-top-left-radius: 34px;
+        border-top-right-radius: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="brand-label">KAPAN KITA BERSAMA</p>
+        <p class="brand-tagline">Supporting foreign nationals <br>across Indonesia</p>
+      </div>
+      <button class="menu-btn" id="menuToggle" aria-label="Open menu">Menu</button>
+    </header>
+
+    <main class="content">
+      <section class="hero-card" id="home">
+        <p class="eyebrow"><span class="hero-dot"></span>Indonesia structuring advisory</p>
+        <h1 class="hero-title">Structure your life and assets in Indonesia—properly.</h1>
+        <p class="hero-text">
+          Legal, administrative, and long-term support for foreign nationals relocating, operating, and planning in Bali.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-btn" href="#paths">Choose your situation</a>
+          <a class="secondary-btn" href="#consult">Book initial consultation</a>
+        </div>
+      </section>
+
+      <section class="section" id="trust">
+        <div class="trust-card">
+          <p class="eyebrow">Trust</p>
+          <h2 class="trust-title">Client-led. Legally executed.</h2>
+          <p class="trust-text">
+            Initial guidance and ongoing coordination are handled directly by a dedicated client lead with experience in onboarding, customer success, and operational management across international environments.
+          </p>
+          <p class="trust-text">
+            All structuring, compliance, and legal work is overseen and executed under the direction of a New Zealand–qualified lawyer working within Indonesian legal practice.
+          </p>
+          <p class="trust-text">
+            This gives clients clear communication from the start and legally accountable execution throughout.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="paths">
+        <div class="section-header">
+          <p class="eyebrow">Primary action</p>
+          <h2 class="section-title">Choose your situation</h2>
+          <p class="section-copy">
+            Start with the part of your life that needs to be structured correctly first.
+          </p>
+        </div>
+
+        <div class="path-grid">
+          <button class="path-card" type="button">
+            <div class="path-top">
+              <span class="path-tag">Path 01</span>
+              <span class="path-arrow">→</span>
+            </div>
+            <h3 class="path-title">Entering Indonesia</h3>
+            <p class="path-text">
+              Visa pathway structuring, pre-arrival guidance, registration handling, and administrative setup from day one.
+            </p>
+            <span class="text-link">Explore this path →</span>
+          </button>
+
+          <button class="path-card" type="button">
+            <div class="path-top">
+              <span class="path-tag">Path 02</span>
+              <span class="path-arrow">→</span>
+            </div>
+            <h3 class="path-title">Operating in Indonesia</h3>
+            <p class="path-text">
+              Ongoing compliance oversight, representation, issue resolution, and structural advisory for life and business on the ground.
+            </p>
+            <span class="text-link">Explore this path →</span>
+          </button>
+
+          <button class="path-card" type="button">
+            <div class="path-top">
+              <span class="path-tag">Path 03</span>
+              <span class="path-arrow">→</span>
+            </div>
+            <h3 class="path-title">Protecting Your Assets</h3>
+            <p class="path-text">
+              Executor structuring, documentation alignment, asset access coordination, and long-term readiness in Indonesia.
+            </p>
+            <span class="text-link">Explore this path →</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section" id="process">
+        <div class="section-header">
+          <p class="eyebrow">How it works</p>
+          <h2 class="section-title">A guided process, not guesswork.</h2>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-top">
+              <span class="step-number">01</span>
+            </div>
+            <h3 class="step-title">Identify your situation</h3>
+            <p class="step-text">
+              Start with the path that reflects where you are now: entering, operating, or planning long-term asset protection.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-top">
+              <span class="step-number">02</span>
+            </div>
+            <h3 class="step-title">Speak with us</h3>
+            <p class="step-text">
+              We assess your position, identify the risks, and determine whether we are the right fit to handle the work properly.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-top">
+              <span class="step-number">03</span>
+            </div>
+            <h3 class="step-title">We structure everything properly</h3>
+            <p class="step-text">
+              Once engaged, we coordinate the legal, administrative, and compliance steps required to establish your position correctly.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="positioning">
+        <div class="positioning-card">
+          <p class="eyebrow">Why structure matters</p>
+          <h2 class="positioning-title">Indonesia rewards structure—and exposes everything else over time.</h2>
+          <p class="positioning-text">
+            What feels minor at the beginning—visa choices, registration steps, informal arrangements—often determines how you operate months or years later.
+          </p>
+          <p class="positioning-text">
+            Most problems do not come from a single event. They build quietly through early decisions that were never structured properly.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="consult">
+        <div class="cta-card">
+          <p class="eyebrow">Consultation</p>
+          <h2 class="cta-title">Book an initial consultation.</h2>
+          <p class="cta-text">
+            Consultation fees are credited toward any engagement. Use this first conversation to determine the correct structure and next step.
+          </p>
+          <div class="cta-actions">
+            <a class="primary-btn" href="#intake">Start intake form</a>
+            <a class="secondary-btn" href="#">WhatsApp / Email</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="intake">
+        <div class="intake-card">
+          <p class="eyebrow">Pre-qualification</p>
+          <h2 class="intake-title">Start with a short intake form.</h2>
+          <p class="intake-text">
+            Before the consultation, we collect the basics required to understand your situation and whether we can assist.
+          </p>
+
+          <ul class="intake-list">
+            <li>Your situation: entering, operating, or estate planning.</li>
+            <li>Your timeline and current readiness to proceed.</li>
+            <li>Your biggest concern or uncertainty right now.</li>
+            <li>Your current status with visas, registration, or Indonesian asset planning.</li>
+            <li>Your contact details for follow-up and scheduling.</li>
+          </ul>
+
+          <div class="hero-actions" style="margin-top: 20px;">
+            <a class="primary-btn" href="#">Open intake form</a>
+            <a class="secondary-btn" href="#home">Back to top</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="menu-panel" id="menuPanel" aria-hidden="true">
+      <div class="menu-sheet">
+        <div class="menu-sheet-top">
+          <div class="brand-block">
+            <p class="brand-label">KAPAN KITA BERSAMA</p>
+            <p class="brand-tagline">Supporting foreign nationals <br> across Indonesia</p>
+          </div>
+          <button class="menu-close" id="menuClose" aria-label="Close menu">×</button>
+        </div>
+
+        <nav class="menu-list">
+          <a class="menu-link" href="#about-advisors">About Your Advisors</a>
+          <a class="menu-link" href="#arrival-establishment">Arrival &amp; Establishment</a>
+          <a class="menu-link" href="#ongoing-support">Ongoing Support</a>
+          <a class="menu-link" href="#executor-asset-protection">Executor &amp; Asset Protection</a>
+          <a class="menu-link" href="#insights">Insights</a>
+          <a class="menu-link" href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const menuPanel = document.getElementById('menuPanel');
+    const menuClose = document.getElementById('menuClose');
+    const menuLinks = document.querySelectorAll('.menu-link');
+
+    function openMenu() {
+      menuPanel.classList.add('open');
+      menuPanel.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      menuPanel.classList.remove('open');
+      menuPanel.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+
+    menuPanel.addEventListener('click', function (event) {
+      if (event.target === menuPanel) closeMenu();
+    });
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
+</body></html>
